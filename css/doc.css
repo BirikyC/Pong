@@ -3,6 +3,36 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+html{
+	font-size: 5px;
+}
+@media (min-width: 249px){
+	html{
+		font-size: 8px;
+	}
+}
+@media (min-width: 576px){
+	html{
+		font-size: 11px;
+	}
+}
+@media (min-width: 768px){
+	html{
+		font-size: 14px;
+	}
+}
+@media (min-width: 992px){
+	html{
+		font-size: 17px;
+	}
+}
+@media (min-width: 1200px){
+	html{
+		font-size: 20px;
+	}
+}
+
 body{
 	min-height: 100vh;
 }

@@ -1,0 +1,12 @@
+body{
+	display: grid;
+	place-items: center;
+	background-color: hsl(200, 50%, 15%);
+}
+
+iframe{
+	width: 50rem;
+	aspect-ratio: 16 / 9;
+	border: 2px solid lightgray;
+	border-radius: .5em;
+}
