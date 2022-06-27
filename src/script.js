@@ -1,53 +1,18 @@
+import Player from "./player"
+
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
 canvas.width = innerWidth
 canvas.height = innerHeight
-let rem = canvas.height / 100
-
-$(window).resize(function(){
-	canvas.width = innerWidth
-	canvas.height = innerHeight
-	rem = canvas.height / 100
-	player[0] = new Player()
-	player[0].draw()
-})
-
-class Player{
-	constructor(pwidth, pheight, posx){
-		this.height = pheight
-		this.width = pwidth
-		this.color = "white"
-		this.velocity = {
-			x: 0,
-			y: 0
-		}
-
-		this.position = {
-			x: posx,
-			y: canvas.height / 2 - this.height / 2
-		}
-	}
-
-	draw(){
-		ctx.beginPath()
-		ctx.rect(this.position.x, this.position.y, this.width, this.height)
-		ctx.fillStyle = this.color
-		ctx.fill()
-	}
-
-	update(){
-		this.draw()
-		this.position.y += this.velocity.y
-	}
-}
+let unit = canvas.height / 100
 
 class Ball{
 	constructor(){
-		this.diameter = 2 * rem
+		this.diameter = 2 * unit
 		this.color = "white"
 		this.velocity = {
-			x: 1.5 * rem,
+			x: 1.5 * unit,
 			y: 0
 		}
 
@@ -74,10 +39,10 @@ class Ball{
 	}
 }
 
-let player_width = 5 * rem
-let player_height = 25 * rem
-let player_posx = 8 * rem + player_width
-let player = [null]
+let player_width = 5 * unit
+let player_height = 25 * unit
+let player_posx = 8 * unit + player_width
+let player = []
 player[0] = new Player(player_width, player_height, player_posx)
 player[1] = new Player(player_width, player_height, canvas.width - player_width - player_posx)
 
@@ -125,16 +90,16 @@ animation()
 $(document).keydown(function(e){
 	switch(e.keyCode){
 		case 38:
-			player[1].velocity.y = -rem
+			player[1].velocity.y = -unit
 			break
 		case 87:
-			player[0].velocity.y = -rem
+			player[0].velocity.y = -unit
 			break
 		case 40:
-			player[1].velocity.y = rem
+			player[1].velocity.y = unit
 			break
 		case 83:
-			player[0].velocity.y = rem
+			player[0].velocity.y = unit
 			break
 	}
 })
