@@ -110,7 +110,12 @@ function hitBall(num){
 	ball.velocity.y = (players[num].position.y + player_height / 2 - ball.position.y) / -6
 }
 
-gameLoop()
+$('.play').click(function(){
+	$('.text').addClass('hide').removeClass('text')
+	gameLoop()
+})
+
+// gameLoop()
 
 $(document).keydown(function(e){
 	switch(e.keyCode){

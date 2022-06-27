@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="eng">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,13 +7,178 @@
 	<link rel="stylesheet" href="css/doc.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
 		body{
 			background-color: black;
 			overflow: hidden;
 		}
+
+		h1{
+			--top: 0%;
+			position: absolute;
+			top: var(--top);
+			left: 50%;
+			transform: translate(-50%, 0);
+			font-size: 7em;
+			font-weight: 900;
+			pointer-events: none;
+			animation: loadMenu 2s ease-in-out;
+		}
+
+		.menu{
+			--top: 55%;
+			position: absolute;
+			top: var(--top);
+			left: 50%;
+			transform: translate(-50%, -50%);
+			list-style-type: none;
+			animation: loadMenu 2s ease-in-out;
+		}
+
+		@keyframes loadMenu{
+			0%{
+				top: calc(var(--top) - 75%);
+			}
+			100%{
+				top: var(--top);
+			}
+		}
+
+		li{
+			display: flex;
+			align-items: center;
+			font-size: 2.5em;
+			font-weight: 400;
+			user-select: none;
+			transition: .1s;
+		}
+
+		.menu.settings > li{
+			font-size: 2em;
+		}
+
+		text:hover{
+			color: white;
+		}
+
+		.back{
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%, 0);
+		}
+
+		.back > span{
+			font-size: 1.25em;
+		}
+
+		.text{
+			font-family: 'Roboto', sans-serif;
+			color: rgba(255, 255, 255, .9);
+			cursor: pointer;
+		}
+
+		.math{
+			font-size: .5em;
+			margin-left: -.5em;
+		}
+
+		.hide{
+			display: none;
+		}
+
+		.hide-animation{
+			animation: hideMenu 2s ease-in-out;
+		}
+
+		@keyframes hideMenu{
+			0%{
+				top: var(--top);
+			}
+			100%{
+				top: calc(var(--top) * 2.5);
+				display: none;
+			}
+		}
+
+		label{
+			display: flex;
+		}
+
+		input{
+			width: 4em;
+			background: none;
+			border: none !important;
+			outline: none !important;
+			margin-left: .5em;
+			font-size: inherit;
+		}
+
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button{
+			-webkit-appearance: none;
+  			margin: 0;
+		}
+
+		input[type=number] {
+			-moz-appearance: textfield;
+		}
 	</style>
 </head>
 <body>
+	<h1 class="text">Pong</h1>
+	<ul class="menu start">
+		<li class="play text">Play</li>
+		<li class="settings text">Settings</li>
+		<li class="text">Exit</li>
+	</ul>
+	<ul class="menu settings hide">
+		<li class="num">
+			<label class="text">Max Score: <input class="text" type="number" value="5"></label>
+		</li>
+		<li class="num">
+			<label class="text">Max Games: <input class="text" type="number" value="1"></label>
+		</li>
+		<li>
+			<label class="text">Main Color: <input class="text" type="text" value="White"></label>
+		</li>
+		<li class="back">
+			<span class="text">Back</span>
+		</li>
+	</ul>
+	<script>
+		$(function(){
+			const hide = 'hide'
+			const hideAni = 'hide-animation'
+			const aniTime = 1900
+			
+			$('.settings.text').click(function(e){
+				if(typeof($('.menu.settings.hide')[0]) === 'undefined') return
+
+				$('.menu.start').addClass(hideAni)
+				setTimeout(clearStart, aniTime)
+				$('.menu.settings').removeClass(hide)
+			})
+			$('.back > span').click(function(){
+				if(typeof($('.menu.start.hide')[0]) === 'undefined') return
+
+				$('.menu.settings').addClass(hideAni)
+				setTimeout(clearSettings, aniTime)
+				$('.menu.start').removeClass(hide)
+			})
+			$('input[type="number"]').change(function(){
+				if(this.value > 99) this.value = 99
+			})
+			
+		})
+
+		function clearStart(){
+			$('.menu.start').addClass('hide').removeClass('hide-animation')
+		}
+
+		function clearSettings(){
+			$('.menu.settings').addClass('hide').removeClass('hide-animation')
+		}
+	</script>
 	<canvas></canvas>
 	<script src="src/script.js"></script>
 </body>
