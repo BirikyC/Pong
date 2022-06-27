@@ -1,11 +1,38 @@
-import Player from "./player"
-
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
 canvas.width = innerWidth
 canvas.height = innerHeight
-let unit = canvas.height / 100
+const unit = canvas.height / 100
+
+class Player{
+	constructor(pwidth, pheight, posx){
+		this.height = pheight
+		this.width = pwidth
+		this.color = "white"
+		this.velocity = {
+			x: 0,
+			y: 0
+		}
+
+		this.position = {
+			x: posx,
+			y: canvas.height / 2 - this.height / 2
+		}
+	}
+
+	draw(){
+		ctx.beginPath()
+		ctx.rect(this.position.x, this.position.y, this.width, this.height)
+		ctx.fillStyle = this.color
+		ctx.fill()
+	}
+
+	update(){
+		this.draw()
+		this.position.y += this.velocity.y
+	}
+}
 
 class Ball{
 	constructor(){
@@ -39,23 +66,23 @@ class Ball{
 	}
 }
 
-let player_width = 5 * unit
-let player_height = 25 * unit
-let player_posx = 8 * unit + player_width
-let player = []
-player[0] = new Player(player_width, player_height, player_posx)
-player[1] = new Player(player_width, player_height, canvas.width - player_width - player_posx)
-
+const player_width = 5 * unit
+const player_height = 25 * unit
+const player_start_position = 8 * unit + player_width
+const players = [
+	new Player(player_width, player_height, player_start_position),
+	new Player(player_width, player_height, canvas.width - player_width - player_start_position)
+]
 const ball = new Ball()
 
-function animation(){
+function gameLoop(){
 	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter) return
-	requestAnimationFrame(animation)
+	ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-	if(ball.position.x - ball.diameter / 2 <= player[0].position.x + player_width && ball.position.x >= player[0].position.x && ball.position.y - ball.diameter <= player[0].position.y + player_height && ball.position.y >= player[0].position.y && ball.velocity.x < 0){
+	if(ball.position.x - ball.diameter / 2 <= players[0].position.x + player_width && ball.position.x >= players[0].position.x && ball.position.y - ball.diameter <= players[0].position.y + player_height && ball.position.y >= players[0].position.y && ball.velocity.x < 0){
 		hitBall(0)
 	}
-	else if(ball.position.x + ball.diameter / 2 >= player[1].position.x && ball.position.x <= player[1].position.x + player_width && ball.position.y - ball.diameter <= player[1].position.y + player_height && ball.position.y >= player[1].position.y && ball.velocity.x > 0){
+	else if(ball.position.x + ball.diameter / 2 >= players[1].position.x && ball.position.x <= players[1].position.x + player_width && ball.position.y - ball.diameter <= players[1].position.y + player_height && ball.position.y >= players[1].position.y && ball.velocity.x > 0){
 		hitBall(1)
 	}
 
@@ -63,43 +90,41 @@ function animation(){
 		ball.velocity.y = -ball.velocity.y
 	}
 
-	ctx.clearRect(0, 0, canvas.width, canvas.height)
-	for(let i=0; i<=1; i++){
-		playerMovement(i)
-	}
+	playerMovement()
 	ball.update()
+
+	requestAnimationFrame(gameLoop)
 }
 
-function playerMovement(num){
-	if(player[num].position.y <= 0 && player[num].velocity.y < 0 || player[num].position.y >= canvas.height - player_height && player[num].velocity.y > 0){
-		player[num].velocity.y = 0
-	}
-
-	player[num].update()
+function playerMovement(){
+	players.forEach((player) => {
+		if(player.position.y <= 0 && player.velocity.y < 0 || player.position.y >= canvas.height - player_height && player.velocity.y > 0) player.velocity.y = 0
+		player.update()
+	})
 }
 
 function hitBall(num){
 	ball.velocity.x = -ball.velocity.x
 	ball.velocity.x *= 1.07
 
-	ball.velocity.y = (player[num].position.y + player_height / 2 - ball.position.y) / -6
+	ball.velocity.y = (players[num].position.y + player_height / 2 - ball.position.y) / -6
 }
 
-animation()
+gameLoop()
 
 $(document).keydown(function(e){
 	switch(e.keyCode){
 		case 38:
-			player[1].velocity.y = -unit
+			players[1].velocity.y = -unit
 			break
 		case 87:
-			player[0].velocity.y = -unit
+			players[0].velocity.y = -unit
 			break
 		case 40:
-			player[1].velocity.y = unit
+			players[1].velocity.y = unit
 			break
 		case 83:
-			player[0].velocity.y = unit
+			players[0].velocity.y = unit
 			break
 	}
 })
@@ -108,11 +133,11 @@ $(document).keyup(function(e){
 	switch(e.keyCode){
 		case 38:
 		case 40:
-			player[1].velocity.y = 0
+			players[1].velocity.y = 0
 			break
 		case 83:
 		case 87:
-			player[0].velocity.y = 0
+			players[0].velocity.y = 0
 			break
 	}
 })
