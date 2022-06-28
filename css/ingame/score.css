@@ -4,7 +4,7 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
-    display: none;
+    display: flex;
     flex-direction: column;
     font-family: 'Orbitron', sans-serif;
     color: white;
@@ -30,7 +30,7 @@
     font-weight: 400;
 }
 
-.scoreAni{
+.score-animation{
     animation: showScore 2s ease-in-out;
 }
 

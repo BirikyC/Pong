@@ -78,9 +78,11 @@ const ball = new Ball(gameColor)
 
 $('.title').addClass('hide-title')
 $('.start').addClass('hide-animation')
+$('.score').addClass('score-animation').removeClass('hide')
 setTimeout(() => {
 	$('.title').addClass('hide').removeClass('hide-title')
 	$('.text').addClass('hide').removeClass('hide-animation')
+	$('.score').removeClass('score-animation')
 	gameLoop()
 }, 1900)
 
