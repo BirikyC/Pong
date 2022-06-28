@@ -92,7 +92,7 @@ setTimeout(() => {
 		$('.break.'+breaksList[i]).removeClass('hide')
 		setTimeout(() => {
 			$('.break.'+breaksList[i]).addClass('hide')
-		}, 600*i)
+		}, 600*(i+1))
 	}
 	
 	setTimeout(() => {
