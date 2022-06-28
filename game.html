@@ -7,10 +7,12 @@
 	<link rel="stylesheet" href="css/doc.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 		body{
 			background-color: black;
 			overflow: hidden;
+			font-family: 'Roboto', sans-serif;
 		}
 
 		h1{
@@ -20,7 +22,7 @@
 			left: 50%;
 			transform: translate(-50%, 0);
 			font-size: 7em;
-			font-weight: 900;
+			font-weight: 700;
 			pointer-events: none;
 			animation: loadMenu 2s ease-in-out;
 		}
@@ -46,19 +48,15 @@
 
 		li{
 			display: flex;
-			align-items: center;
 			font-size: 2.5em;
 			font-weight: 400;
+			
 			user-select: none;
 			transition: .1s;
 		}
 
 		.menu.settings > li{
 			font-size: 2em;
-		}
-
-		text:hover{
-			color: white;
 		}
 
 		.back{
@@ -72,9 +70,13 @@
 		}
 
 		.text{
-			font-family: 'Roboto', sans-serif;
-			color: rgba(255, 255, 255, .9);
+			color: rgb(255, 255, 255);
+			opacity: .9;
 			cursor: pointer;
+		}
+
+		.text:hover{
+			opacity: 1;
 		}
 
 		.math{
@@ -138,8 +140,13 @@
 		<li class="num">
 			<label class="text">Max Games: <input class="text" type="number" value="1"></label>
 		</li>
-		<li>
-			<label class="text">Main Color: <input class="text" type="text" value="White"></label>
+		<li class="text">
+			<span>Main Color: </span>
+			<span class="color" style="margin-left: .5em;">White</span>
+		</li>
+		<li class="text">
+			<span>Theme: </span>
+			<span class="theme" style="margin-left: .5em;">Dark</span>
 		</li>
 		<li class="back">
 			<span class="text">Back</span>
@@ -158,6 +165,7 @@
 				setTimeout(clearStart, aniTime)
 				$('.menu.settings').removeClass(hide)
 			})
+
 			$('.back > span').click(function(){
 				if(typeof($('.menu.start.hide')[0]) === 'undefined') return
 
@@ -165,10 +173,49 @@
 				setTimeout(clearSettings, aniTime)
 				$('.menu.start').removeClass(hide)
 			})
+
 			$('input[type="number"]').change(function(){
 				if(this.value > 99) this.value = 99
 			})
-			
+
+			let colors = ['White', 'Green', 'Blue', 'Red']
+			let rgb = ['rgb(255, 255, 255)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(255, 0, 0)']
+			let actColor = 0
+
+			$('.color').click(function(){
+				actColor++
+				if(actColor >= colors.length) actColor = 0
+				
+				$(this).html(colors[actColor])
+				$('.text').css({color: rgb[actColor]})
+				console.log(actColor)
+			})
+
+			const bgColors = ['Black', 'White']
+			const themes = ['Dark', 'Light']
+			let actTheme = 0
+
+			$('.theme').click(function(){
+				actTheme++
+				if(actTheme >= themes.length) actTheme = 0
+
+				$(this).html(themes[actTheme])
+				
+				if(actTheme === 0){
+					colors[0] = 'White'
+					rgb[0] = 'rgb(255, 255, 255)'
+				}
+				else{
+					colors[0] = 'Black'
+					rgb[0] = 'rgb(0, 0, 0)'
+				}
+
+				if(actColor != 0) return
+
+				$('.color').html(colors[actColor])
+				$('.text').css({color: rgb[actColor]})
+				$('body').css({backgroundColor: bgColors[actTheme]})
+			})
 		})
 
 		function clearStart(){
@@ -180,6 +227,11 @@
 		}
 	</script>
 	<canvas></canvas>
-	<script src="src/script.js"></script>
+	<script>
+		$('.play').click(function(){
+			$.getScript('src/script.js')
+		})
+	</script>
+	<!-- <script src="src/script.js"></script> -->
 </body>
 </html>

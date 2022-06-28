@@ -4,12 +4,13 @@ const ctx = canvas.getContext('2d')
 canvas.width = innerWidth
 canvas.height = innerHeight
 const unit = canvas.height / 100
+const gameColor = $('.color').css('color')
 
 class Player{
-	constructor(pwidth, pheight, posx){
+	constructor(pwidth, pheight, posx, color){
 		this.height = pheight
 		this.width = pwidth
-		this.color = "white"
+		this.color = color
 		this.velocity = {
 			x: 0,
 			y: 0
@@ -35,9 +36,9 @@ class Player{
 }
 
 class Ball{
-	constructor(){
+	constructor(color){
 		this.diameter = 2 * unit
-		this.color = "white"
+		this.color = color
 		this.velocity = {
 			x: 1.5 * unit,
 			y: 0
@@ -70,10 +71,10 @@ const player_width = 5 * unit
 const player_height = 25 * unit
 const player_start_position = 8 * unit + player_width
 const players = [
-	new Player(player_width, player_height, player_start_position),
-	new Player(player_width, player_height, canvas.width - player_width - player_start_position)
+	new Player(player_width, player_height, player_start_position, gameColor),
+	new Player(player_width, player_height, canvas.width - player_width - player_start_position, gameColor)
 ]
-const ball = new Ball()
+const ball = new Ball(gameColor)
 
 function gameLoop(){
 	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter) return
@@ -110,10 +111,13 @@ function hitBall(num){
 	ball.velocity.y = (players[num].position.y + player_height / 2 - ball.position.y) / -6
 }
 
-$('.play').click(function(){
-	$('.text').addClass('hide').removeClass('text')
-	gameLoop()
-})
+$('.text').addClass('hide').removeClass('text')
+gameLoop()
+
+// $('.play').click(function(){
+// 	$('.text').addClass('hide').removeClass('text')
+// 	gameLoop()
+// })
 
 // gameLoop()
 

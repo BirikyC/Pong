@@ -4,10 +4,9 @@ body{
 	background-color: hsl(200, 50%, 15%);
 }
 
-
-
 iframe{
 	aspect-ratio: 16 / 9;
 	border: 2px solid lightgray;
 	border-radius: .5em;
+	box-shadow: 0 0 30px black;
 }
