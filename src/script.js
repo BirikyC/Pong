@@ -98,8 +98,9 @@ function gameLoop(){
 		}
 		
 		let score = parseInt(path.innerText)
-		$(path).html(score++)
-		
+		score++
+		$(path).html(score)
+
 		reset()
 		return
 	}
