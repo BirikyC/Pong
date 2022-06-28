@@ -77,7 +77,10 @@ const players = [
 const ball = new Ball(gameColor)
 
 function gameLoop(){
-	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter) return
+	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter){
+		$.getScript('./reload.js')
+		return
+	}
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
 
 	if(ball.position.x - ball.diameter / 2 <= players[0].position.x + player_width && ball.position.x >= players[0].position.x && ball.position.y - ball.diameter <= players[0].position.y + player_height && ball.position.y >= players[0].position.y && ball.velocity.x < 0){

@@ -1,2 +1,2 @@
 $('script[src="script.js"]').remove()
-$.getScript('src/script.js')
+$.getScript('./script.js')
