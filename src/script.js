@@ -86,6 +86,10 @@ setTimeout(() => {
 	$('.title').addClass('hide').removeClass('hide-title')
 	$('.text').addClass('hide').removeClass('hide-animation')
 	$('.score').removeClass('score-animation')
+	$('.break.ready').removeClass('hide')
+	setTimeout(() => {
+		$('.break.ready').addClass('hide')
+	}, 600)
 	setTimeout(() => {
 		gameLoop()	
 	}, 2000)

@@ -1,0 +1,16 @@
+.break{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: showText .6s linear;
+}
+
+@keyframes showText{
+    0%{
+        font-size: 4em;
+    }
+    100%{
+        font-size: 1em;
+    }
+}
