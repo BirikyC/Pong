@@ -96,7 +96,7 @@ function gameLoop(){
 			path = $('.score-points > span:last-child')
 		}
 		let score = parseInt(path.text())
-		path.html(score++)
+		$(path.className).html(score++)
 
 		reset()
 		return
