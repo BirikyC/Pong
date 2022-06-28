@@ -78,7 +78,8 @@ const ball = new Ball(gameColor)
 
 function gameLoop(){
 	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter){
-		$.getScript('reload.js')
+		console.log('aa')
+		$.getScript('src/reload.js')
 		return
 	}
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
