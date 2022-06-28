@@ -83,11 +83,23 @@ setTimeout(() => {
 	$('.title').addClass('hide').removeClass('hide-title')
 	$('.text').addClass('hide').removeClass('hide-animation')
 	$('.score').removeClass('score-animation')
-	gameLoop()
+	setTimeout(() => {
+		gameLoop()	
+	}, 2000)
+	
 }, 1900)
 
 function gameLoop(){
 	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter){
+		let score = null
+		if(ball.position.x < canvas.width / 2){
+			score = $('.score-points > span:first-child')
+		}
+		else{
+			score = $('.score-points > span:last-child')
+		}
+		//score.html(parseInt(score.text())++)
+		console.log(score.text())
 		reset()
 		return
 	}

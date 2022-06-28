@@ -43,7 +43,7 @@
 }
 
 .hide{
-    display: none;
+    display: none !important;
 }
 
 .hide-animation{
