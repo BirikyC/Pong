@@ -89,7 +89,10 @@ setTimeout(() => {
 	$('.score').removeClass('score-animation')
 
 	for(let i=0; i<breaksList.length; i++){
-		$('.break.'+breaksList[i]).removeClass('hide')
+		setTimeout(() => {
+			$('.break.'+breaksList[i]).removeClass('hide')
+		}, 600*i)
+		
 		setTimeout(() => {
 			$('.break.'+breaksList[i]).addClass('hide')
 		}, 600*(i+1))
