@@ -91,15 +91,13 @@ setTimeout(() => {
 
 function gameLoop(){
 	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter){
-		let score = null
-		if(ball.position.x < canvas.width / 2){
-			score = $('.score-points > span:first-child')
+		let path = $('.score-points > span:first-child')
+		if(ball.position.x > canvas.width / 2){
+			path = $('.score-points > span:last-child')
 		}
-		else{
-			score = $('.score-points > span:last-child')
-		}
-		score.html(parseInt(score.text())++)
-		
+		let score = parseInt(path.text())
+		path.html(score++)
+
 		reset()
 		return
 	}
