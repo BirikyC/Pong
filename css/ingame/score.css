@@ -14,23 +14,16 @@
 
 .score-points, .score-games{
     display: flex;
+    margin-left: .5rem;
+    letter-spacing: 1rem;
 }
 
 .score-points{
-    justify-content: space-between;
     font-size: 3em;
 }
 
-.score-points > span{
-    width: 1em;
-}
-
-.score-points > span:first-child{
-    margin-right: 1em;
-}
-
 .score-games{
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-top: -.5em;
 }
 
