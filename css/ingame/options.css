@@ -1,0 +1,22 @@
+label{
+    display: flex;
+}
+
+input{
+    width: 4em;
+    background: none;
+    border: none !important;
+    outline: none !important;
+    margin-left: .5em;
+    font-size: inherit;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+      margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

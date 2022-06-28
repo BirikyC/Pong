@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Pong</title>
 	<link rel="stylesheet" href="css/doc.css">
+	<link rel="stylesheet" href="css/ingame/menu.css">
+	<link rel="stylesheet" href="css/ingame/settings.css">
+	<link rel="stylesheet" href="css/ingame/options.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -13,129 +16,6 @@
 			background-color: black;
 			overflow: hidden;
 			font-family: 'Roboto', sans-serif;
-		}
-
-		.title{
-			--top: 0%;
-			position: absolute;
-			top: var(--top);
-			left: 50%;
-			transform: translate(-50%, 0);
-			font-size: 7em;
-			font-weight: 700;
-			pointer-events: none;
-			animation: loadMenu 2s ease-in-out;
-		}
-
-		.hide-title{
-			animation: hideTitle 2s ease-in-out;
-		}
-
-		@keyframes hideTitle{
-			0%{
-				top: var(--top);
-			}
-			100%{
-				top: calc(var(--top) - 5em);
-			}
-		}
-
-		.menu{
-			--top: 55%;
-			position: absolute;
-			top: var(--top);
-			left: 50%;
-			transform: translate(-50%, -50%);
-			list-style-type: none;
-			animation: loadMenu 2s ease-in-out;
-		}
-
-		@keyframes loadMenu{
-			0%{
-				top: calc(var(--top) - 75%);
-			}
-			100%{
-				top: var(--top);
-			}
-		}
-
-		li{
-			display: flex;
-			font-size: 2.5em;
-			font-weight: 400;
-			
-			user-select: none;
-			transition: .1s;
-		}
-
-		.menu.settings > li{
-			font-size: 2em;
-		}
-
-		.back{
-			position: absolute;
-			left: 50%;
-			transform: translate(-50%, 0);
-		}
-
-		.back > span{
-			font-size: 1.25em;
-		}
-
-		.text{
-			color: rgb(255, 255, 255);
-			opacity: .9;
-			cursor: pointer;
-		}
-
-		.text:hover{
-			opacity: 1;
-		}
-
-		.math{
-			font-size: .5em;
-			margin-left: -.5em;
-		}
-
-		.hide{
-			display: none;
-		}
-
-		.hide-animation{
-			animation: hideMenu 2s ease-in-out;
-		}
-
-		@keyframes hideMenu{
-			0%{
-				top: var(--top);
-			}
-			100%{
-				top: calc(var(--top) * 2.5);
-				display: none;
-			}
-		}
-
-		label{
-			display: flex;
-		}
-
-		input{
-			width: 4em;
-			background: none;
-			border: none !important;
-			outline: none !important;
-			margin-left: .5em;
-			font-size: inherit;
-		}
-
-		input::-webkit-outer-spin-button,
-		input::-webkit-inner-spin-button{
-			-webkit-appearance: none;
-  			margin: 0;
-		}
-
-		input[type=number] {
-			-moz-appearance: textfield;
 		}
 	</style>
 </head>

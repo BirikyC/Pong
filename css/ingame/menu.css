@@ -1,0 +1,80 @@
+.title{
+    --top: 0%;
+    position: absolute;
+    top: var(--top);
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 7em;
+    font-weight: 700;
+    pointer-events: none;
+    animation: loadMenu 2s ease-in-out;
+}
+
+.hide-title{
+    animation: hideTitle 2s ease-in-out;
+}
+
+@keyframes hideTitle{
+    0%{
+        top: var(--top);
+    }
+    100%{
+        top: calc(var(--top) - 5em);
+    }
+}
+
+.menu{
+    --top: 55%;
+    position: absolute;
+    top: var(--top);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style-type: none;
+    animation: loadMenu 2s ease-in-out;
+}
+
+@keyframes loadMenu{
+    0%{
+        top: calc(var(--top) - 75%);
+    }
+    100%{
+        top: var(--top);
+    }
+}
+
+.hide{
+    display: none;
+}
+
+.hide-animation{
+    animation: hideMenu 2s ease-in-out;
+}
+
+@keyframes hideMenu{
+    0%{
+        top: var(--top);
+    }
+    100%{
+        top: calc(var(--top) * 2.5);
+        display: none;
+    }
+}
+
+li{
+    display: flex;
+    font-size: 2.5em;
+    font-weight: 400;
+    
+    user-select: none;
+    transition: .1s;
+}
+
+.text{
+    color: rgb(255, 255, 255);
+    opacity: .9;
+    cursor: pointer;
+}
+
+.text:hover{
+    opacity: 1;
+}
