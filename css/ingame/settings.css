@@ -1,0 +1,13 @@
+.menu.settings > li{
+    font-size: 2em;
+}
+
+.back{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.back > span{
+    font-size: 1.25em;
+}
