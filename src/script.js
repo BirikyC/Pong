@@ -111,21 +111,13 @@ function hitBall(num){
 	ball.velocity.y = (players[num].position.y + player_height / 2 - ball.position.y) / -6
 }
 
-$('h1').addClass('hide-animation')
+$('h1').addClass('hide-title')
 $('.start').addClass('hide-animation')
 setTimeout(() => {
-	$('h1').addClass('hide').removeClass('hide-animation')
+	$('h1').addClass('hide').removeClass('hide-title')
 	$('.text').addClass('hide').removeClass('hide-animation')
 	gameLoop()
 }, 1900)
-
-
-// $('.play').click(function(){
-// 	$('.text').addClass('hide').removeClass('text')
-// 	gameLoop()
-// })
-
-// gameLoop()
 
 $(document).keydown(function(e){
 	switch(e.keyCode){

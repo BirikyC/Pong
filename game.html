@@ -27,6 +27,19 @@
 			animation: loadMenu 2s ease-in-out;
 		}
 
+		.hide-title{
+			animation: hideTitle 2s ease-in-out;
+		}
+
+		@keyframes hideTitle{
+			0%{
+				top: var(--top);
+			}
+			100%{
+				top: calc(var(--top) * -2);
+			}
+		}
+
 		.menu{
 			--top: 55%;
 			position: absolute;
