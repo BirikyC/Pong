@@ -67,9 +67,9 @@ class Ball{
 	}
 }
 
-const maxScore = $('.maxScore > input').value
-const maxGames = $('.maxGames > input').value
-console.log(maxScore+' | '+maxGames)
+const maxScore = $('.maxScore > input')[0].value
+const maxGames = $('.maxGames > input')[0].value
+
 const player_width = 5 * unit
 const player_height = 25 * unit
 const player_start_position = 8 * unit + player_width
@@ -132,15 +132,21 @@ function hitBall(num){
 }
 
 function scorePoint(){
-	let path = $('.score-points > span')[0]
+	let path = [$('.score-points > span')[0], $('.score-games > span')[0]]
 
 	if(ball.position.x > canvas.width / 2){
-		path = $('.score-points > span')[1]
+		path = [$('.score-points > span')[1], $('.score-games > span')[1]]
 	}
 	
-	let score = parseInt(path.innerText)
+	let score = parseInt(path[0].innerText)
+	let games = parseInt([path[1].innerText])
 	score++
-	$(path).html(score)
+	if(score >= maxScore){
+		score = 0
+		games++
+	}
+	$(path[0]).html(score)
+	$(path[1]).html(games)
 }
 
 function reset(){
