@@ -15,6 +15,10 @@
     font-weight: 500;
 }
 
+.score-points > span:first-child{
+    margin-right: 1em;
+}
+
 .score-points, .score-games{
     display: flex;
     justify-content: space-between;
