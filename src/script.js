@@ -78,7 +78,7 @@ const ball = new Ball(gameColor)
 
 function gameLoop(){
 	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter){
-		$.getScript('src/reload.js')
+		reset()
 		return
 	}
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -112,6 +112,16 @@ function hitBall(num){
 	ball.velocity.x *= 1.07
 
 	ball.velocity.y = (players[num].position.y + player_height / 2 - ball.position.y) / -6
+}
+
+function reset(){
+	players.forEach((player) => {
+		player.position.y = player_start_position
+		ball.position.x = canvas.width / 2
+		ball.position.y = canvas.height / 2
+		ball.velocity.x = 1.5 * unit
+		ball.velocity.y = 0
+	})
 }
 
 $('.title').addClass('hide-title')
