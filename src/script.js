@@ -98,8 +98,8 @@ function gameLoop(){
 		else{
 			score = $('.score-points > span:last-child')
 		}
-		//score.html(parseInt(score.text())++)
-		console.log(score.text())
+		score.html(parseInt(score.text())++)
+		
 		reset()
 		return
 	}
