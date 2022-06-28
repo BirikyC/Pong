@@ -10,8 +10,10 @@ $(function(){
     let actColor = 0
 
     $('.color').click(function(){
-        changeText(this, actColor, colors)
+        actColor++
+        if(actColor >= colors.length) actColor = 0
         
+        $(this).html(colors[actColor])
         $('.text').css({color: rgb[actColor]})
         console.log(actColor)
     })
@@ -21,7 +23,10 @@ $(function(){
     let actTheme = 0
 
     $('.theme').click(function(){
-        changeText(this, actTheme, themes)
+        actTheme++
+        if(actTheme >= themes.length) actTheme = 0
+
+        $(this).html(themes[actTheme])
         
         if(actTheme === 0){
             colors[0] = 'White'
@@ -40,11 +45,3 @@ $(function(){
         $('.text').css({color: rgb[actColor]})
     })
 })
-
-function changeText(name, num, list){
-    num++
-    if(num >= list.length) num = 0
-
-    $(name).html(list[num])
-    return num
-}
