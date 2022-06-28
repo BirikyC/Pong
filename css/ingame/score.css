@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Share+Tech+Mono&display=swap');
 
 .score{
     position: absolute;
@@ -6,7 +6,7 @@
     transform: translate(-50%, 0);
     display: flex;
     flex-direction: column;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Share Tech Mono', monospace;
     color: white;
     user-select: none;
     cursor: default;
@@ -19,7 +19,6 @@
 .score-points{
     justify-content: space-between;
     font-size: 3em;
-    font-weight: 500;
 }
 
 .score-points > span{
@@ -33,7 +32,6 @@
 .score-games{
     justify-content: space-evenly;
     margin-top: -.5em;
-    font-weight: 400;
 }
 
 .score-animation{
