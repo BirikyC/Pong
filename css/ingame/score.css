@@ -8,6 +8,8 @@
     flex-direction: column;
     font-family: 'Orbitron', sans-serif;
     color: white;
+    user-select: none;
+    cursor: default;
 }
 
 .score-points, .score-games{

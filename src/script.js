@@ -91,16 +91,7 @@ setTimeout(() => {
 
 function gameLoop(){
 	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter){
-		let path = $('.score-points > span')[0]
-
-		if(ball.position.x > canvas.width / 2){
-			path = $('.score-points > span')[1]
-		}
-		
-		let score = parseInt(path.innerText)
-		score++
-		$(path).html(score)
-
+		scorePoint()
 		reset()
 		return
 	}
@@ -135,6 +126,18 @@ function hitBall(num){
 	if(ball.velocity.y != 0) ball.velocity.x *= 1.07
 
 	ball.velocity.y = (players[num].position.y + player_height / 2 - ball.position.y) / -6
+}
+
+function scorePoint(){
+	let path = $('.score-points > span')[0]
+
+	if(ball.position.x > canvas.width / 2){
+		path = $('.score-points > span')[1]
+	}
+	
+	let score = parseInt(path.innerText)
+	score++
+	$(path).html(score)
 }
 
 function reset(){
