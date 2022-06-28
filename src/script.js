@@ -94,13 +94,17 @@ function gameLoop(){
 		let score = 0
 		if(ball.position.x < canvas.width / 2){
 			score = parseInt($('.score-points > span:first-child').text())
-			$('.score-points > span:first-child').html(score++)
+			score++
+			console.log(score)
+			$('.score-points > span:first-child').html(score)
 		}
 		else{
 			score = parseInt($('.score-points > span:last-child').text())
-			$('.score-points > span:last-child').html(score++)
+			score++
+			console.log(score)
+			$('.score-points > span:last-child').html(score)
 		}
-		console.log('bbb')
+		console.log('ccc')
 		reset()
 		return
 	}
