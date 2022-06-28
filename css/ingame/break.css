@@ -5,7 +5,7 @@
     transform: translate(-50%, -50%);
     cursor: default;
     user-select: none;
-    animation: showText .6s linear;
+    animation: showText .7s linear;
 }
 
 @keyframes showText{

@@ -67,7 +67,6 @@ class Ball{
 	}
 }
 
-const breaksList = ['ready', 'steady', 'go']
 const maxScore = $('.maxScore > input')[0].value
 const maxGames = $('.maxGames > input')[0].value
 
@@ -88,13 +87,14 @@ setTimeout(() => {
 	$('.text').addClass('hide').removeClass('hide-animation')
 	$('.score').removeClass('score-animation')
 
+	let path = $('.break')
 	for(let i=0; i<breaksList.length; i++){
 		setTimeout(() => {
-			$('.break.'+breaksList[i]).removeClass('hide')
+			$(path[i]).removeClass('hide')
 		}, 600*i)
 		
 		setTimeout(() => {
-			$('.break.'+breaksList[i]).addClass('hide')
+			$(path[i]).addClass('hide')
 		}, 600*(i+1))
 	}
 	
