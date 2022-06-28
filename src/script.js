@@ -76,6 +76,14 @@ const players = [
 ]
 const ball = new Ball(gameColor)
 
+$('.title').addClass('hide-title')
+$('.start').addClass('hide-animation')
+setTimeout(() => {
+	$('.title').addClass('hide').removeClass('hide-title')
+	$('.text').addClass('hide').removeClass('hide-animation')
+	gameLoop()
+}, 1900)
+
 function gameLoop(){
 	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter){
 		reset()
@@ -117,20 +125,14 @@ function hitBall(num){
 function reset(){
 	players.forEach((player) => {
 		player.position.y = player_start_position
-		ball.position.x = canvas.width / 2
-		ball.position.y = canvas.height / 2
-		ball.velocity.x = 1.5 * unit
-		ball.velocity.y = 0
 	})
-}
+	ball.position.x = canvas.width / 2
+	ball.position.y = canvas.height / 2
+	ball.velocity.x = 1.5 * unit
+	ball.velocity.y = 0
 
-$('.title').addClass('hide-title')
-$('.start').addClass('hide-animation')
-setTimeout(() => {
-	$('.title').addClass('hide').removeClass('hide-title')
-	$('.text').addClass('hide').removeClass('hide-animation')
 	gameLoop()
-}, 1900)
+}
 
 $(document).keydown(function(e){
 	switch(e.keyCode){
