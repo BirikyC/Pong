@@ -67,6 +67,9 @@ class Ball{
 	}
 }
 
+const maxScore = $('.maxScore > input').value()
+const maxGames = $('.maxGames > input').value()
+console.log(maxScore+' | '+maxGames)
 const player_width = 5 * unit
 const player_height = 25 * unit
 const player_start_position = 8 * unit + player_width
