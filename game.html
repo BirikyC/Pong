@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="css/ingame/settings.css">
 	<link rel="stylesheet" href="css/ingame/options.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="src/menu-animation.js"></script>
+	<script src="src/settings.js"></script>
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
@@ -45,80 +47,6 @@
 			<span class="text">Back</span>
 		</li>
 	</ul>
-	<script>
-		$(function(){
-			const hide = 'hide'
-			const hideAni = 'hide-animation'
-			const aniTime = 1900
-			
-			$('.settings.text').click(function(e){
-				if(typeof($('.menu.settings.hide')[0]) === 'undefined') return
-
-				$('.menu.start').addClass(hideAni)
-				setTimeout(clearStart, aniTime)
-				$('.menu.settings').removeClass(hide)
-			})
-
-			$('.back > span').click(function(){
-				if(typeof($('.menu.start.hide')[0]) === 'undefined') return
-
-				$('.menu.settings').addClass(hideAni)
-				setTimeout(clearSettings, aniTime)
-				$('.menu.start').removeClass(hide)
-			})
-
-			$('input[type="number"]').change(function(){
-				if(this.value > 99) this.value = 99
-			})
-
-			let colors = ['White', 'Green', 'Blue', 'Red']
-			let rgb = ['rgb(255, 255, 255)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(255, 0, 0)']
-			let actColor = 0
-
-			$('.color').click(function(){
-				actColor++
-				if(actColor >= colors.length) actColor = 0
-				
-				$(this).html(colors[actColor])
-				$('.text').css({color: rgb[actColor]})
-				console.log(actColor)
-			})
-
-			const bgColors = ['Black', 'White']
-			const themes = ['Dark', 'Light']
-			let actTheme = 0
-
-			$('.theme').click(function(){
-				actTheme++
-				if(actTheme >= themes.length) actTheme = 0
-
-				$(this).html(themes[actTheme])
-				
-				if(actTheme === 0){
-					colors[0] = 'White'
-					rgb[0] = 'rgb(255, 255, 255)'
-				}
-				else{
-					colors[0] = 'Black'
-					rgb[0] = 'rgb(0, 0, 0)'
-				}
-
-				if(actColor != 0) return
-
-				$('.color').html(colors[actColor])
-				$('.text').css({color: rgb[actColor]})
-				$('body').css({backgroundColor: bgColors[actTheme]})
-			})
-		})
-
-		function clearStart(){
-			$('.menu.start').addClass('hide').removeClass('hide-animation')
-		}
-
-		function clearSettings(){
-			$('.menu.settings').addClass('hide').removeClass('hide-animation')
-		}
-	</script>
 	<canvas></canvas>
 	<script>
 		$('.play').click(function(){
