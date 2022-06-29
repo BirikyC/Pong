@@ -222,6 +222,7 @@ function endGame(){
 	$(path[1]).removeClass(hideClass)
 	setInterval(() => {
 		$(path[1]).addClass(hideClass)
+		$('.menu.after').removeClass(hideClass)
 	}, aniTime)
 }
 
