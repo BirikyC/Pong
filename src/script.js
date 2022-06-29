@@ -155,7 +155,7 @@ function scorePoint(){
 	}
 
 	if(path[0] === $('.score-points > span')[1]){
-		$(path[2]).html(path[2].innerText.replace('One', 'Two'))
+		path[2].html(path[2].innerText.replace('One', 'Two'))
 	}
 	
 	let score = parseInt(path[0].innerText)
