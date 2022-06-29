@@ -147,15 +147,14 @@ function hitBall(num){
 }
 
 function scorePoint(){
-	let path = [$('.score-points > span')[0], $('.score-games > span')[0]]
+	let path = [$('.score-points > span')[0], $('.score-games > span')[0], $('.break.point')[0]]
 
 	if(ball.position.x < canvas.width / 2){
 		path = [$('.score-points > span')[1], $('.score-games > span')[1]]
 	}
 
-	let player = path[0]
 	if(path[0] === $('.score-points > span')[1]){
-		console.log($('.break.point')[0].innerText.replace('One', 'Two'))
+		path[2].html(path[2].innerText.replace('One', 'Two'))
 	}
 	
 	let score = parseInt(path[0].innerText)
