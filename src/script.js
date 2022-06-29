@@ -196,6 +196,8 @@ function reset(){
 		setTimeout(() => {
 			$(path[i]).addClass('hide')
 		}, 400+aniTime*(i+2))
+
+		console.log(path[i])
 	}
 	
 	setTimeout(() => {
