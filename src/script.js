@@ -150,7 +150,8 @@ function scorePoint(){
 	let path = [$('.score-points > span')[0], $('.score-games > span')[0], $('.break.point')[0]]
 
 	if(ball.position.x < canvas.width / 2){
-		path = [$('.score-points > span')[1], $('.score-games > span')[1]]
+		path[0] = $('.score-points > span')[1]
+		path[1] = $('.score-games > span')[1]
 	}
 
 	if(path[0] === $('.score-points > span')[1]){
