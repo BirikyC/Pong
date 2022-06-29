@@ -87,7 +87,7 @@ $('.start').addClass('hide-animation')
 $('.score').addClass('score-animation').removeClass(hideClass)
 setTimeout(() => {
 	$('.title').addClass(hideClass).removeClass('hide-title')
-	//$('.text').addClass(hideClass).removeClass('hide-animation')
+	$('.menu.start').addClass(hideClass).removeClass('hide-animation')
 	$('.score').removeClass('score-animation '+hideClass)
 
 	let path = $('.break')
