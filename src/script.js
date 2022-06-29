@@ -108,6 +108,7 @@ setTimeout(() => {
 
 function gameLoop(){
 	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter){
+		console.log(gameEnd)
 		if(!gameEnd){
 			scorePoint()
 			reset()
