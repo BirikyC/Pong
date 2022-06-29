@@ -227,7 +227,14 @@ function endGame(){
 }
 
 $('.rematch').click(function(){
-	reset()
+	$('.menu.after').addClass('hide-animation')
+	setTimeout(() => {
+		endGame = false
+		
+		$('.menu.after').addClass(hideClass).removeClass('hide-animation')
+		
+		reset()
+	}, aniTime)
 })
 
 $(document).keydown(function(e){
