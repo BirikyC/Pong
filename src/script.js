@@ -184,9 +184,23 @@ function reset(){
 
 	setTimeout(() => {
 		$('.break.point').addClass('hide')
-		gameLoop()
+		
 	}, aniTime)
 	
+	let path = ('.break')
+	for(i=0; i<2; i++){
+		setTimeout(() => {
+			path[i*2].removeClass('hide')
+		}, 400+aniTime*(i+1))
+		
+		setTimeout(() => {
+			path[i*2].addClass('hide')
+		}, 400+aniTime*(i+2))
+	}
+	
+	setTimeout(() => {
+		gameLoop()
+	}, 400+aniTime*3)
 }
 
 $(document).keydown(function(e){
