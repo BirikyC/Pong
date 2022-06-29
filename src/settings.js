@@ -1,7 +1,7 @@
 $(function(){
     const maxNum = 9
     $('input[type="number"]').change(function(){
-        let path = this.className.replace(' text', '')
+        let path = this.parentNode.className.replace(' text', '')
         if(this.value > maxNum) this.value = maxNum
         else if(this.value < 1) this.value = 1
 
