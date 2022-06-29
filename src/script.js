@@ -156,7 +156,7 @@ function scorePoint(){
 	let player = path[0]
 	if(path[0] === $('.score-points > span')[0]){
 		//$('.break.point').html($('.break.point').innerText.replace('One', 'Two'))
-		console.log($('.break.point').innerText)
+		console.log($('.break.point'))
 	}
 	
 	let score = parseInt(path[0].innerText)
