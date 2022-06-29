@@ -67,8 +67,10 @@ class Ball{
 	}
 }
 
+let aniTime = 600
 const maxScore = $('.maxScore > input')[0].value
 const maxGames = $('.maxGames > input')[0].value
+let gameEnd = false
 
 const player_width = 5 * unit
 const player_height = 25 * unit
@@ -88,14 +90,14 @@ setTimeout(() => {
 	$('.score').removeClass('score-animation hide')
 
 	let path = $('.break')
-	for(let i=0; i<path.length; i++){
+	for(let i=0; i<3; i++){
 		setTimeout(() => {
 			$(path[i]).removeClass('hide')
-		}, 600*i)
+		}, aniTime*i)
 		
 		setTimeout(() => {
 			$(path[i]).addClass('hide')
-		}, 600*(i+1))
+		}, aniTime*(i+1))
 	}
 	
 	setTimeout(() => {
@@ -105,6 +107,7 @@ setTimeout(() => {
 }, 1900)
 
 function gameLoop(){
+	if(gameEnd) return
 	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter){
 		scorePoint()
 		reset()
@@ -149,6 +152,11 @@ function scorePoint(){
 	if(ball.position.x > canvas.width / 2){
 		path = [$('.score-points > span')[1], $('.score-games > span')[1]]
 	}
+
+	let player = path[0]
+	if(path[0] === $('.score-points > span')[1]){
+		$('.break.point').html($('.break.point').innerText.replace('One', 'Two'))
+	}
 	
 	let score = parseInt(path[0].innerText)
 	let games = parseInt([path[1].innerText])
@@ -156,9 +164,11 @@ function scorePoint(){
 	if(score >= maxScore){
 		score = 0
 		games++
+		$('.score-points > span').html(score)
 	}
 	$(path[0]).html(score)
 	$(path[1]).html(games)
+	if(games >= maxGames) return gameEnd = true
 }
 
 function reset(){
@@ -170,7 +180,13 @@ function reset(){
 	ball.velocity.x = 1.5 * unit
 	ball.velocity.y = 0
 
-	gameLoop()
+	$('.break.point').removeClass('hide')
+
+	setTimeout(() => {
+		$('.break.point').addClass('hide')
+		gameLoop()
+	}, aniTime)
+	
 }
 
 $(document).keydown(function(e){
