@@ -229,15 +229,11 @@ function endGame(){
 $('.rematch').click(function(){
 	$('.menu.after').addClass('hide-animation')
 	setTimeout(() => {
-		endGame = false
+		gameEnd = false
 
 		$('.menu.after').addClass(hideClass).removeClass('hide-animation')
 		
-		players.forEach((player) => {
-			player.position.y = canvas.height / 2 - player.height / 2
-		})
-
-		gameLoop()
+		reset()
 	}, 1900)
 })
 
