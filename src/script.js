@@ -107,10 +107,12 @@ setTimeout(() => {
 }, 1900)
 
 function gameLoop(){
-	if(gameEnd) return
 	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter){
-		scorePoint()
-		reset()
+		if(!gameEnd){
+			scorePoint()
+			reset()
+		}
+		
 		return
 	}
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
