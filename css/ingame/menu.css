@@ -42,6 +42,10 @@
     }
 }
 
+.menu.after{
+    display: flex;
+}
+
 .hide{
     display: none !important;
 }

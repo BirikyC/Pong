@@ -68,6 +68,7 @@ class Ball{
 }
 
 let aniTime = 600
+const hideClass = 'hide'
 const maxScore = $('.maxScore > input')[0].value
 const maxGames = $('.maxGames > input')[0].value
 let gameEnd = false
@@ -83,20 +84,20 @@ const ball = new Ball(gameColor)
 
 $('.title').addClass('hide-title')
 $('.start').addClass('hide-animation')
-$('.score').addClass('score-animation').removeClass('hide')
+$('.score').addClass('score-animation').removeClass(hideClass)
 setTimeout(() => {
-	$('.title').addClass('hide').removeClass('hide-title')
-	$('.text').addClass('hide').removeClass('hide-animation')
-	$('.score').removeClass('score-animation hide')
+	$('.title').addClass(hideClass).removeClass('hide-title')
+	$('.text').addClass(hideClass).removeClass('hide-animation')
+	$('.score').removeClass('score-animation '+hideClass)
 
 	let path = $('.break')
 	for(let i=0; i<3; i++){
 		setTimeout(() => {
-			$(path[i]).removeClass('hide')
+			$(path[i]).removeClass(hideClass)
 		}, aniTime*i)
 		
 		setTimeout(() => {
-			$(path[i]).addClass('hide')
+			$(path[i]).addClass(hideClass)
 		}, aniTime*(i+1))
 	}
 	
@@ -186,23 +187,23 @@ function reset(){
 	ball.velocity.y = 0
 
 	setTimeout(() => {
-		$('.break.point').removeClass('hide')	
+		$('.break.point').removeClass(hideClass)	
 	}, 100)
 	
 
 	setTimeout(() => {
-		$('.break.point').addClass('hide')
+		$('.break.point').addClass(hideClass)
 		
 	}, 100+aniTime)
 	
 	let path = [$('.break.ready')[0], $('.break.go')[0]]
 	for(let i=0; i<2; i++){
 		setTimeout(() => {
-			$(path[i]).removeClass('hide')
+			$(path[i]).removeClass(hideClass)
 		}, 500+aniTime*(i+1))
 		
 		setTimeout(() => {
-			$(path[i]).addClass('hide')
+			$(path[i]).addClass(hideClass)
 		}, 500+aniTime*(i+2))
 	}
 	
@@ -214,9 +215,19 @@ function reset(){
 function endGame(){
 	path = [$('.score-games > span')[0], $('.break.win')[0]]
 
-	console.log('sisu')
-	if(parseInt($('.score-games > span')[1].innerText) > parseInt(path[0].innerText)) console.log('asd')
+	if(parseInt($('.score-games > span')[1].innerText) > parseInt(path[0].innerText)){
+		$(path[1]).html(path[1].innerText.replace('One', 'Two'))
+	}
+
+	$(path[1]).removeClass(hideClass)
+	setInterval(() => {
+		$(path[1]).addClass(hideClass)
+	}, aniTime)
 }
+
+$('.rematch').click(function(){
+	reset()
+})
 
 $(document).keydown(function(e){
 	switch(e.keyCode){
