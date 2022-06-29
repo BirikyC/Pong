@@ -229,11 +229,12 @@ function endGame(){
 $('.rematch').click(function(){
 	$('.menu.after').addClass('hide-animation')
 	setTimeout(() => {
-		endGame = false
-		
+		// endGame = false
+
 		$('.menu.after').addClass(hideClass).removeClass('hide-animation')
 		
-		reset()
+		// reset()
+		location.reload()
 	}, aniTime)
 })
 
