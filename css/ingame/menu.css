@@ -44,7 +44,7 @@
 
 .menu.after{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
 }
 
 .hide{
