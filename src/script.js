@@ -233,7 +233,11 @@ $('.rematch').click(function(){
 
 		$('.menu.after').addClass(hideClass).removeClass('hide-animation')
 		
-		reset()
+		players.forEach((player) => {
+			player.position.y = canvas.height / 2 - player.height / 2
+		})
+
+		gameLoop()
 	}, 1900)
 })
 
