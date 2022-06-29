@@ -48,7 +48,7 @@ $(function(){
 })
 
 $(function(){
-    $('.start').click(function(){
+    $('.menu.after > .start').click(function(){
         location.reload()
         return false
     })
