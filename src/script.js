@@ -180,23 +180,14 @@ function reset(){
 	ball.velocity.x = 1.5 * unit
 	ball.velocity.y = 0
 
-	$('.break.point').removeClass('hide')
+	setTimeout(() => {
+		$('.break.point').removeClass('hide')
+	}, 100)
 
 	setTimeout(() => {
 		$('.break.point').addClass('hide')
 		
-	}, aniTime)
-	
-	let path = [$('.break.ready')[0], $('.break.go')[0]]
-	for(let i=0; i<2; i++){
-		setTimeout(() => {
-			$(path[i]).removeClass('hide')
-		}, 400+aniTime*(i+1))
-		
-		setTimeout(() => {
-			$(path[i]).addClass('hide')
-		}, 400+aniTime*(i+2))
-	}
+	}, 100+aniTime)
 	
 	setTimeout(() => {
 		gameLoop()
