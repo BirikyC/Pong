@@ -181,17 +181,29 @@ function reset(){
 	ball.velocity.y = 0
 
 	setTimeout(() => {
-		$('.break.point').removeClass('hide')
+		$('.break.point').removeClass('hide')	
 	}, 100)
+	
 
 	setTimeout(() => {
 		$('.break.point').addClass('hide')
 		
 	}, 100+aniTime)
 	
+	let path = [$('.break.ready')[0], $('.break.go')[0]]
+	for(let i=0; i<2; i++){
+		setTimeout(() => {
+			$(path[i]).removeClass('hide')
+		}, 500+aniTime*(i+1))
+		
+		setTimeout(() => {
+			$(path[i]).addClass('hide')
+		}, 500+aniTime*(i+2))
+	}
+	
 	setTimeout(() => {
 		gameLoop()
-	}, 400+aniTime*3)
+	}, 500+aniTime*3)
 }
 
 $(document).keydown(function(e){
