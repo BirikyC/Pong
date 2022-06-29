@@ -3,6 +3,9 @@ $(function(){
     $('input[type="number"]').change(function(){
         if(this.value > maxNum) this.value = maxNum
         else if(this.value < 1) this.value = 1
+
+        document.cookie = "number="+this.value
+        console.log(document.cookie)
     })
 })
 
