@@ -214,6 +214,7 @@ function reset(){
 function endGame(){
 	path = [$('.score-games > span')[0], $('.break.win')[0]]
 
+	console.log('siu')
 	if($('.score-games > span')[0].value > path[0].value) console.log('asd')
 }
 
