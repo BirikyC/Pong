@@ -72,6 +72,7 @@ const hideClass = 'hide'
 const maxScore = $('.maxScore > input')[0].value
 const maxGames = $('.maxGames > input')[0].value
 let gameEnd = false
+let rematch = false
 
 const player_width = 5 * unit
 const player_height = 25 * unit
@@ -115,7 +116,8 @@ function gameLoop(){
 			endGame()
 			return
 		}
-		reset()
+		if(!rematch) resetGame()
+		else rematch = false
 		
 		return
 	}
@@ -177,14 +179,8 @@ function scorePoint(){
 	if(games >= maxGames) return gameEnd = true
 }
 
-function reset(){
-	players.forEach((player) => {
-		player.position.y = canvas.height / 2 - player.height / 2
-	})
-	ball.position.x = canvas.width / 2
-	ball.position.y = canvas.height / 2
-	ball.velocity.x = 1.5 * unit
-	ball.velocity.y = 0
+function resetGame(){
+	resetPosition()
 
 	setTimeout(() => {
 		$('.break.point').removeClass(hideClass)	
@@ -212,6 +208,16 @@ function reset(){
 	}, 500+aniTime*3)
 }
 
+function resetPosition(){
+	players.forEach((player) => {
+		player.position.y = canvas.height / 2 - player.height / 2
+	})
+	ball.position.x = canvas.width / 2
+	ball.position.y = canvas.height / 2
+	ball.velocity.x = 1.5 * unit
+	ball.velocity.y = 0
+}
+
 function endGame(){
 	path = [$('.score-games > span')[0], $('.break.win')[0]]
 
@@ -230,16 +236,11 @@ $('.rematch').click(function(){
 	$('.menu.after').addClass('hide-animation')
 	setTimeout(() => {
 		gameEnd = false
+		rematch = true
 
 		$('.menu.after').addClass(hideClass).removeClass('hide-animation')
-		
-		players.forEach((player) => {
-			player.position.y = canvas.height / 2 - player.height / 2
-		})
 
-		setTimeout(() => {
-			$('.break.point').addClass(hideClass)
-		}, 100)
+		resetPosition()
 		gameLoop()
 	}, 1900)
 })
