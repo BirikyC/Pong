@@ -187,7 +187,7 @@ function reset(){
 		
 	}, aniTime)
 	
-	let path = [('.break')[0], $('.break')[2]]
+	let path = [('.break.ready')[0], $('.break.go')[0]]
 	for(i=0; i<2; i++){
 		setTimeout(() => {
 			$(path[i]).removeClass('hide')
