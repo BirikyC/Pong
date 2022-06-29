@@ -6,8 +6,6 @@ $(function(){
         else if(this.value < 1) this.value = 1
 
         document.cookie = path+"="+this.value
-        console.log(document.cookie)
-        console.log('aaaa | '+path)
     })
 })
 

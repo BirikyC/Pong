@@ -49,6 +49,20 @@
 			<span class="text">Back</span>
 		</li>
 	</ul>
+	<script>
+		$(function(){
+			console.log('b')
+			$(document).click(function(){
+				console.log(getCookie('maxScore'))
+			})
+		})
+
+		function getCookie(name) {
+			const cookies = `; ${document.cookie}`;
+			const parts = cookies.split(`; ${name}=`);
+			if (parts.length === 2) return parts.pop().split(';').shift();
+		}
+	</script>
 	<ul class="menu after hide">
 		<li class="start text">Menu</li>
 	</ul>
