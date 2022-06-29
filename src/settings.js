@@ -7,6 +7,7 @@ $(function(){
 
         document.cookie = path+"="+this.value
         console.log(document.cookie)
+        console.log('aaaa | '+path)
     })
 })
 
