@@ -220,7 +220,7 @@ function endGame(){
 	}
 
 	$(path[1]).removeClass(hideClass)
-	setInterval(() => {
+	setTimeout(() => {
 		$(path[1]).addClass(hideClass)
 		$('.menu.after').removeClass(hideClass)
 	}, aniTime)
