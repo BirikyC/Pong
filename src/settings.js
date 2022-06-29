@@ -17,7 +17,6 @@ $(function(){
         
         $(this).html(colors[actColor])
         $('.text').css({color: rgb[actColor]})
-        console.log(actColor)
     })
 
     const bgColors = ['Black', 'White']
