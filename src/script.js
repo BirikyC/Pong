@@ -110,7 +110,10 @@ function gameLoop(){
 	if(ball.position.x + ball.diameter < -ball.diameter || ball.position.x - ball.diameter > canvas.width + ball.diameter){
 		scorePoint()
 
-		if(gameEnd) return
+		if(gameEnd){
+			endGame()
+			return
+		}
 		reset()
 		
 		return
@@ -206,6 +209,12 @@ function reset(){
 	setTimeout(() => {
 		gameLoop()
 	}, 500+aniTime*3)
+}
+
+function endGame(){
+	path = [$('.score-games > span')[0], $('.break.win')[0]]
+
+	if($('.score-games > span')[0].value > path[0].value) console.log('asd')
 }
 
 $(document).keydown(function(e){
