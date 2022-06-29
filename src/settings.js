@@ -1,10 +1,11 @@
 $(function(){
     const maxNum = 9
     $('input[type="number"]').change(function(){
+        let path = this.className.replace(' text', '')
         if(this.value > maxNum) this.value = maxNum
         else if(this.value < 1) this.value = 1
 
-        document.cookie = "number="+this.value
+        document.cookie = path+"="+this.value
         console.log(document.cookie)
     })
 })
@@ -20,6 +21,8 @@ $(function(){
         
         $(this).html(colors[actColor])
         $('.text').css({color: rgb[actColor]})
+        
+        document.cookie = "color="+colors[actColor]
     })
 
     const bgColors = ['Black', 'White']
@@ -47,6 +50,9 @@ $(function(){
 
         $('.color').html(colors[actColor])
         $('.text').css({color: rgb[actColor]})
+
+        document.cookie = "color="+colors[actColor]
+        document.cookie = "theme="+bgColors[actTheme]
     })
 })
 
