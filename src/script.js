@@ -190,11 +190,11 @@ function reset(){
 	let path = ('.break')
 	for(i=0; i<2; i++){
 		setTimeout(() => {
-			path[i*2].removeClass('hide')
+			$(path[i*2]).removeClass('hide')
 		}, 400+aniTime*(i+1))
 		
 		setTimeout(() => {
-			path[i*2].addClass('hide')
+			$(path[i*2]).addClass('hide')
 		}, 400+aniTime*(i+2))
 	}
 	
