@@ -187,17 +187,15 @@ function reset(){
 		
 	}, aniTime)
 	
-	let path = [('.break.ready')[0], $('.break.go')[0]]
+	let path = [$('.break.ready')[0], $('.break.go')[0]]
 	for(i=0; i<2; i++){
 		setTimeout(() => {
-			$(path[0]).removeClass('hide')
+			$(path[i]).removeClass('hide')
 		}, 400+aniTime*(i+1))
 		
 		setTimeout(() => {
-			$(path[0]).addClass('hide')
+			$(path[i]).addClass('hide')
 		}, 400+aniTime*(i+2))
-
-		console.log($('.break.ready')[0])
 	}
 	
 	setTimeout(() => {
