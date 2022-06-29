@@ -237,6 +237,9 @@ $('.rematch').click(function(){
 			player.position.y = canvas.height / 2 - player.height / 2
 		})
 
+		setTimeout(() => {
+			$('.break.point').addClass(hideClass)
+		}, 100)
 		gameLoop()
 	}, 1900)
 })
