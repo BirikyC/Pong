@@ -51,9 +51,14 @@
 	</ul>
 	<script>
 		$(function(){
-			console.log('b')
+			console.log('a')
 			$(document).click(function(){
-				console.log(getCookie('maxScore'))
+				let maxScore = getCookie('maxScore')
+				let maxGames = getCookie('maxGames')
+				let color = getCookie('color')
+				let theme = getCookie('theme')
+
+				console.log(maxScore+' | '+maxGames+' | '+color+' | '+theme)
 			})
 		})
 
