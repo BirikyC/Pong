@@ -56,8 +56,9 @@ $(function(){
     const themes = ['Dark', 'Light']
     let actTheme = 0
 
+    console.log('si')
     for(let i=0; i<bgColors.length; i++){
-        if($('.theme').text() == bgColors[i]){
+        if($('.theme').text() == themes[i]){
             actTheme = i
             $('body').css({backgroundColor: bgColors[actTheme]})
             if(actTheme == 1) colors[0] = 'Black'
@@ -82,7 +83,7 @@ $(function(){
         }
 
         $('body').css({backgroundColor: bgColors[actTheme]})
-        document.cookie = "theme="+bgColors[actTheme]
+        document.cookie = "theme="+themes[actTheme]
 
         if(actColor != 0) return
 
