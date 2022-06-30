@@ -60,6 +60,8 @@ $(function(){
         if($('.theme').text() == bgColors[i]){
             actTheme = i
             $('body').css({backgroundColor: bgColors[actTheme]})
+            if(actTheme == 1) colors[0] = 'Black'
+            
             break
         }
     }
@@ -80,14 +82,13 @@ $(function(){
         }
 
         $('body').css({backgroundColor: bgColors[actTheme]})
+        document.cookie = "theme="+bgColors[actTheme]
 
         if(actColor != 0) return
 
         $('.color').html(colors[actColor])
         $('.text').css({color: rgb[actColor]})
-
         document.cookie = "color="+colors[actColor]
-        document.cookie = "theme="+bgColors[actTheme]
     })
 })
 
