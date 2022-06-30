@@ -51,12 +51,20 @@
 	</ul>
 	<script>
 		$(function(){
-			console.log('c')
+			console.log('a')
 			$(document).click(function(){
 				const cookies = [getCookie('maxScore'), getCookie('maxGames'), getCookie('color'), getCookie('theme')]
+				const path = [$('.maxScore > input'), $('.maxGames > input'), $('.color'), $('.theme')]
+				const basicValue = [5, 1, 'White', 'Dark']
 
-				console.log(getCookie('siu'))
-				console.log(cookies)
+				for(let i=0; i<path.length-2; i++){
+					$(path[i]).val(cookies[i])
+					if(typeof cookies[i] === 'undefined') path[i].val(basicValue[i])
+				}
+				for(let i=2; i<path.length; i++){
+					$(path[i]).html(cookies[i])
+					if(typeof cookies[i] === 'undefined') path[i].html(basicValue[i])
+				}
 			})
 		})
 
