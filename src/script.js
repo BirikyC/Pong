@@ -6,6 +6,8 @@ canvas.height = innerHeight
 const unit = canvas.height / 100
 const gameColor = $('.color').css('color')
 
+console.log('s')
+
 class Player{
 	constructor(pwidth, pheight, posx, color){
 		this.height = pheight
@@ -73,16 +75,16 @@ const maxScore = $('.maxScore > input')[0].value
 const maxGames = $('.maxGames > input')[0].value
 let gameEnd = false
 
-let pushKey = [
-	first = [
-		up = false,
-		down = false
-	],
-	sec = [
-		up = false,
-		down = false
-	]
-]
+let pushKey = {
+	first: {
+		up: false,
+		down: false
+	},
+	sec: {
+		up: false,
+		down: false
+	}
+}
 
 const player_width = 5 * unit
 const player_height = 25 * unit
@@ -154,7 +156,7 @@ function playerMovement(){
 	else if(pushKey.first.down) players[0].velocity.y = unit
 	if(pushKey.sec.up) players[1].velocity.y = -unit
 	else if(pushKey.sec.down) players[1].velocity.y = unit
-	
+
 	players.forEach((player) => {
 		if(player.position.y <= 0 && player.velocity.y < 0 || player.position.y >= canvas.height - player_height && player.velocity.y > 0) player.velocity.y = 0
 		player.update()
@@ -252,10 +254,6 @@ $(document).keydown(function(e){
 			pushKey.sec.up = true
 			//players[1].velocity.y = -unit
 			break
-		case 87:
-			pushKey.first.up = true
-			//players[0].velocity.y = -unit
-			break
 		case 40:
 			pushKey.sec.down = true
 			//players[1].velocity.y = unit
@@ -263,6 +261,10 @@ $(document).keydown(function(e){
 		case 83:
 			pushKey.first.down = true
 			//players[0].velocity.y = unit
+			break
+		case 87:
+			pushKey.first.up = true
+			//players[0].velocity.y = -unit
 			break
 	}
 })
