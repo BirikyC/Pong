@@ -49,27 +49,6 @@
 			<span class="text">Back</span>
 		</li>
 	</ul>
-	<script>
-		$(function(){
-			const cookies = [getCookie('maxScore'), getCookie('maxGames'), getCookie('color'), getCookie('theme')]
-			const path = [$('.maxScore > input'), $('.maxGames > input'), $('.color'), $('.theme')]
-
-			for(let i=0; i<path.length-2; i++){
-				if(typeof cookies[i] === 'undefined') continue
-				$(path[i]).val(cookies[i])
-			}
-			for(let i=2; i<path.length; i++){
-				if(typeof cookies[i] === 'undefined') continue
-				$(path[i]).html(cookies[i])
-			}
-		})
-
-		function getCookie(name) {
-			const cookies = `; ${document.cookie}`;
-			const parts = cookies.split(`; ${name}=`);
-			if (parts.length === 2) return parts.pop().split(';').shift();
-		}
-	</script>
 	<ul class="menu after hide">
 		<li class="start text">Menu</li>
 	</ul>

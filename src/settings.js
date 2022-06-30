@@ -9,12 +9,34 @@ $(function(){
     })
 })
 
+console.log('a')
+$(function(){
+    const cookies = [getCookie('maxScore'), getCookie('maxGames'), getCookie('color'), getCookie('theme')]
+    const path = [$('.maxScore > input'), $('.maxGames > input'), $('.color'), $('.theme')]
+
+    for(let i=0; i<path.length-2; i++){
+        if(typeof cookies[i] === 'undefined') continue
+        $(path[i]).val(cookies[i])
+    }
+    for(let i=2; i<path.length; i++){
+        if(typeof cookies[i] === 'undefined') continue
+        $(path[i]).html(cookies[i])
+    }
+})
+
+function getCookie(name) {
+    const cookies = `; ${document.cookie}`;
+    const parts = cookies.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 $(function(){
     let colors = ['White', 'Green', 'Blue', 'Red']
     let rgb = ['rgb(255, 255, 255)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(255, 0, 0)']
     let actColor = 0
 
     for(let i=0; i<colors.length; i++){
+        console.log($('.color').text()+' | '+colors[i])
         if($('.color').text() == colors[i]){
             actColor = i
             $('.text').css({color: rgb[actColor]})
@@ -37,6 +59,7 @@ $(function(){
     let actTheme = 0
 
     for(let i=0; i<bgColors.length; i++){
+        console.log($('.theme').text()+' | '+bgColors[i])
         if($('.theme').text() == bgColors[i]){
             actTheme = i
             $('body').css({backgroundColor: bgColors[actTheme]})
