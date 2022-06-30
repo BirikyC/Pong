@@ -73,6 +73,17 @@ const maxScore = $('.maxScore > input')[0].value
 const maxGames = $('.maxGames > input')[0].value
 let gameEnd = false
 
+let pushKey = [
+	first = [
+		up = false,
+		down = false
+	],
+	sec = [
+		up = false,
+		down = false
+	]
+]
+
 const player_width = 5 * unit
 const player_height = 25 * unit
 const player_start_position = 8 * unit + player_width
@@ -139,6 +150,11 @@ function gameLoop(){
 }
 
 function playerMovement(){
+	if(pushKey.first.up) players[0].velocity.y = -unit
+	else if(pushKey.first.down) players[0].velocity.y = unit
+	if(pushKey.sec.up) players[1].velocity.y = -unit
+	else if(pushKey.sec.down) players[1].velocity.y = unit
+	
 	players.forEach((player) => {
 		if(player.position.y <= 0 && player.velocity.y < 0 || player.position.y >= canvas.height - player_height && player.velocity.y > 0) player.velocity.y = 0
 		player.update()
@@ -233,16 +249,20 @@ function endGame(){
 $(document).keydown(function(e){
 	switch(e.keyCode){
 		case 38:
-			players[1].velocity.y = -unit
+			pushKey.sec.up = true
+			//players[1].velocity.y = -unit
 			break
 		case 87:
-			players[0].velocity.y = -unit
+			pushKey.first.up = true
+			//players[0].velocity.y = -unit
 			break
 		case 40:
-			players[1].velocity.y = unit
+			pushKey.sec.down = true
+			//players[1].velocity.y = unit
 			break
 		case 83:
-			players[0].velocity.y = unit
+			pushKey.first.down = true
+			//players[0].velocity.y = unit
 			break
 	}
 })
@@ -250,12 +270,18 @@ $(document).keydown(function(e){
 $(document).keyup(function(e){
 	switch(e.keyCode){
 		case 38:
+			pushKey.sec.up = false
+			break
 		case 40:
-			players[1].velocity.y = 0
+			pushKey.sec.down = false
+			//players[1].velocity.y = 0
 			break
 		case 83:
+			pushKey.first.down = false
+			break
 		case 87:
-			players[0].velocity.y = 0
+			pushKey.first.up = false
+			//players[0].velocity.y = 0
 			break
 	}
 })
