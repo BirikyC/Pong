@@ -56,12 +56,12 @@
 			const basicValue = [5, 1, 'White', 'Dark']
 
 			for(let i=0; i<path.length-2; i++){
+				if(typeof cookies[i] === 'undefined') continue
 				$(path[i]).val(cookies[i])
-				if(typeof cookies[i] === 'undefined') path[i].val(basicValue[i])
 			}
 			for(let i=2; i<path.length; i++){
+				if(typeof cookies[i] === 'undefined') continue
 				$(path[i]).html(cookies[i])
-				if(typeof cookies[i] === 'undefined') path[i].html(basicValue[i])
 			}
 		})
 
