@@ -9,7 +9,6 @@ $(function(){
     })
 })
 
-console.log('a')
 $(function(){
     const cookies = [getCookie('maxScore'), getCookie('maxGames'), getCookie('color'), getCookie('theme')]
     const path = [$('.maxScore > input'), $('.maxGames > input'), $('.color'), $('.theme')]
@@ -36,7 +35,6 @@ $(function(){
     let actColor = 0
 
     for(let i=0; i<colors.length; i++){
-        console.log($('.color').text()+' | '+colors[i])
         if($('.color').text() == colors[i]){
             actColor = i
             $('.text').css({color: rgb[actColor]})
@@ -59,7 +57,6 @@ $(function(){
     let actTheme = 0
 
     for(let i=0; i<bgColors.length; i++){
-        console.log($('.theme').text()+' | '+bgColors[i])
         if($('.theme').text() == bgColors[i]){
             actTheme = i
             $('body').css({backgroundColor: bgColors[actTheme]})
