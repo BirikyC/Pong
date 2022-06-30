@@ -14,6 +14,14 @@ $(function(){
     let rgb = ['rgb(255, 255, 255)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)', 'rgb(255, 0, 0)']
     let actColor = 0
 
+    for(let i=0; i<colors.length; i++){
+        if($('.color').innerText == colors[i]){
+            actColor = i
+            $('.text').css({color: rgb[actColor]})
+            break
+        }
+    }
+
     $('.color').click(function(){
         actColor++
         if(actColor >= colors.length) actColor = 0
@@ -27,6 +35,14 @@ $(function(){
     const bgColors = ['Black', 'White']
     const themes = ['Dark', 'Light']
     let actTheme = 0
+
+    for(let i=0; i<bgColors.length; i++){
+        if($('.theme').innerText == bgColors[i]){
+            actTheme = i
+            $('body').css({backgroundColor: bgColors[actTheme]})
+            break
+        }
+    }
 
     $('.theme').click(function(){
         actTheme++
