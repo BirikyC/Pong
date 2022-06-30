@@ -56,16 +56,19 @@ $(function(){
     const themes = ['Dark', 'Light']
     let actTheme = 0
 
-    console.log('si')
+    console.log('siu')
     for(let i=0; i<bgColors.length; i++){
         if($('.theme').text() == themes[i]){
             actTheme = i
             $('body').css({backgroundColor: bgColors[actTheme]})
             if(actTheme == 1) colors[0] = 'Black'
             
+            console.log('sia')
             break
         }
+        console.log(i)
     }
+    console.log(actTheme+' | '+colors)
 
     $('.theme').click(function(){
         actTheme++
