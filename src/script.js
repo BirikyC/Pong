@@ -6,8 +6,6 @@ canvas.height = innerHeight
 const unit = canvas.height / 100
 const gameColor = $('.color').css('color')
 
-console.log('s')
-
 class Player{
 	constructor(pwidth, pheight, posx, color){
 		this.height = pheight
@@ -154,8 +152,11 @@ function gameLoop(){
 function playerMovement(){
 	if(pushKey.first.up) players[0].velocity.y = -unit
 	else if(pushKey.first.down) players[0].velocity.y = unit
+	else players[0].velocity.y = 0
+
 	if(pushKey.sec.up) players[1].velocity.y = -unit
 	else if(pushKey.sec.down) players[1].velocity.y = unit
+	else players[1].velocity.y = 0
 
 	players.forEach((player) => {
 		if(player.position.y <= 0 && player.velocity.y < 0 || player.position.y >= canvas.height - player_height && player.velocity.y > 0) player.velocity.y = 0
